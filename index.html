@@ -17,62 +17,53 @@
     <nav>
       <button id="btn-home" class="btn" data-i18n="home">Home</button>
       <button id="btn-memorion" class="btn" data-i18n="nav.memorion">Memorion</button>
-      <button id="btn-calc" class="btn" data-i18n="nav.calc">Calc Net</button>
+      <button id="btn-calc" class="btn" data-i18n="nav.calc">Calc <i class='fa-solid fa-globe'></i> Net</button>
       <button id="btn-map" class="btn" data-i18n="nav.map">Maps API</button>
     </nav>
   </header>
 
   <main>
     <div id="home">
-      <table>
-        <tr>
-          <th><p id="personalDetails" data-i18n="personalDetails">Personal Details:</p></th>
-          <td>
-            <p><strong><span id="name" data-i18n="name">Name:</span></strong> Andrés Báez</p>
-          </td>
-        </tr>
-        <tr>
-          <th></th>
-          <td><p><strong><span id="city" data-i18n="city">City:</span></strong> León (Spain)</p></td>
-        </tr>
-        <tr>
-          <th></th>
-          <td><p><strong><span id="age" data-i18n="age">Age:</span></strong> 20</p></td>
-        </tr>
-        <tr>
-          <th><p id="personalStatement" data-i18n="personalStatement">Personal Statement:</p></th>
-          <td>
+        <section id="pd">
+        <h2 id="personalDetails" data-i18n="personalDetails">Personal Details:</h2>
+        <p id="pdText" data-i18n="pdText">I am Andrés Báez, a 20-years-old student in León.</p>
+        </section>
+
+        <section id="ps">
+            <h2 id="personalStatement" data-i18n="personalStatement">Personal Statement:</h2>
             <p id="statement" data-i18n="statement">
               I am currently pursuing an advanced vocational education in Development of Web Applications in IES San Andrés...
             </p>
-          </td>
-        </tr>
-        <tr>
-          <th data-i18n="education">Education:</th>
-          <td data-i18n="educationContent">First year of Higher Technician in Development of Web Applications.</td>
-        </tr>
-        <tr>
-          <th data-i18n="experience">Work experience:</th>
-          <td data-i18n="experienceContent">
+        </section>
+
+        <section>
+          <h2 data-i18n="education">Education:</h2>
+          <p data-i18n="educationContent">First year of Higher Technician in Development of Web Applications.</p>
+        </section>
+
+        <section>
+          <h2 data-i18n="experience">Work experience:</h2>
+          <p data-i18n="experienceContent">
             I have three months of full-time work experience at Lupa Supermarket...
-          </td>
-        </tr>
-        <tr>
-          <th data-i18n="skills">Skills:</th>
-          <td data-i18n="skillsContent">HTML, CSS, JavaScript, MySQL, Git, GitHub.</td>
-        </tr>
-        <tr>
-          <th data-i18n="contacts">Contacts:</th>
-          <td>abdamotta@gmail.com</td>
-        </tr>
-        <tr>
-          <th></th>
-          <td>
+          </p>
+        </section>
+
+        <section>
+          <h2 data-i18n="skills">Skills:</h2>
+          <p data-i18n="skillsContent">HTML, CSS, JavaScript, MySQL, Git, GitHub.</p>
+        </section>
+
+        <section>
+          <h2 data-i18n="contacts">Contacts:</h2>
+          <p>abdamotta@gmail.com</p>
+        </section>
+
+        <section>
+          <p>
             <button onclick="window.open('https://www.linkedin.com/in/andrés-báez-41611b33a')" data-i18n="goLinkedin">Go to LinkedIn</button>
             <button onclick="window.open('https://github.com/bamotta')" data-i18n="goGithub">Go to GitHub</button>
-          </td>
-        </tr>
-      </table>
+          </p>
+        </section>
     </div>
 
     <div id="memorion" style="display: none;">Contenido de Memorion</div>
