@@ -35,10 +35,7 @@ function loadLanguage(lang) {
 
 // -----------------------Utility Functions-----------------------
 function reload() {
-  hideAllSections();
-  document.getElementById("home").style.display = "block";
-  document.getElementById("title").textContent = t("title");
-  toggleLangButton(true)
+  location.reload();
 }
 
 function hideAllSections() {
