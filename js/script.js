@@ -1,284 +1,266 @@
-var currentLang = 'en'; //default language
-
-function switchLanguage() {
-  currentLang = currentLang === 'en' ? 'es' : 'en';
-
-  const elements = document.querySelectorAll("[data-en]");
-  elements.forEach(el => {
-    el.textContent = el.getAttribute(`data-${currentLang}`);
-  });
-
-  // change the button text
-  document.getElementById("lang-toggle").textContent = currentLang === 'en' ? "Español" : "English";
-}
-
-// event for the button
-document.getElementById("lang-toggle").addEventListener("click", switchLanguage);
-
-
+// -----------------------Language Configuration-----------------------
+let currentLang = 'en'; // Default language
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById("btn-home").addEventListener("click", reload);
-    document.getElementById("btn-memorion").addEventListener("click", memorion);
-    document.getElementById("btn-calc").addEventListener("click", calc);
-    document.getElementById("btn-map").addEventListener("click", map);
+  // Initial language load
+  loadLanguage(currentLang);
+
+  // Navigation event listeners
+  document.getElementById("btn-home").addEventListener("click", reload);
+  document.getElementById("btn-memorion").addEventListener("click", memorion);
+  document.getElementById("btn-calc").addEventListener("click", calc);
+  document.getElementById("btn-map").addEventListener("click", map);
+
+  // Language toggle button
+  document.getElementById('lang-toggle').addEventListener('click', () => {
+    currentLang = currentLang === 'en' ? 'es' : 'en';
+    loadLanguage(currentLang);
+    document.getElementById('lang-toggle').textContent = currentLang === 'en' ? 'Español' : 'English';
+  });
 });
 
+// Load language file and apply translations
+function loadLanguage(lang) {
+  fetch('js/lang.json')
+    .then(res => res.json())
+    .then(data => {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (data[lang][key]) {
+          el.textContent = data[lang][key];
+        }
+      });
+    });
+}
+
+// -----------------------Utility Functions-----------------------
+function reload() {
+  location.reload();
+}
+
 function hideAllSections() {
-    document.getElementById("home").style.display = "none";
-    document.getElementById("memorion").style.display = "none";
-    document.getElementById("calc").style.display = "none";
-    document.getElementById("map").style.display = "none";
+  ["home", "memorion", "calc", "map"].forEach(id => {
+    document.getElementById(id).style.display = "none";
+  });
 }
 
-function reload(){
-    location.reload();
+function toggleLangButton(show) {
+  const langButton = document.getElementById("lang-toggle");
+  langButton.style.display = show ? "inline-block" : "none";
 }
 
-function memorion(){
-    hideAllSections();
+// -----------------------Memorion Section-----------------------
+function memorion() {
+  hideAllSections();
+  toggleLangButton(false);
 
-    const memorionDiv = document.getElementById("memorion");
-    memorionDiv.className = "content-section";
-    memorionDiv.style.display = "block";
-    memorionDiv.innerHTML = "";
+  const div = document.getElementById("memorion");
+  div.className = "content-section";
+  div.style.display = "block";
+  div.innerHTML = "";
 
-    document.getElementById("title").textContent = "MEMORION";
+  document.getElementById("title").textContent = "MEMORION";
 
-    memorionText(memorionDiv);
-    memorionImages(memorionDiv);
-    memorionButton(memorionDiv);
-}
-function memorionText(memorionDiv) {
-    const memorionText = document.createElement("p");
-    memorionText.textContent = "Memorion is a game where you can test your memory by trying to search for the pairs of cards. " +
-        "You need to find pairs of matching cards by flipping them over one at a time. " +
-        "The game ends when all pairs are found.";
-    memorionDiv.appendChild(memorionText);
+  memorionText(div);
+  memorionImages(div);
+  memorionButton(div);
 }
 
-function memorionImages(memorionDiv) {
-    const img1Title = document.createElement("h2");
-    img1Title.textContent = "Memorion Initial Screen";
-    img1Title.classList.add("img-title");
-    memorionDiv.appendChild(img1Title);
-
-
-    const img1 = document.createElement("img");
-    img1.src = "../img/memorion-inicio.png";
-    img1.alt = "Memorion Initial Screen";
-    img1.title = "Memorion Initial Screen";
-    memorionDiv.appendChild(img1);
-
-    const img2Title = document.createElement("h2");
-    img2Title.textContent = "Memorion Board";
-    img2Title.classList.add("img-title");
-    memorionDiv.appendChild(img2Title);
-
-
-    const img2 = document.createElement("img");
-    img2.src = "../img/memorion-tablero.png";
-    img2.alt = "Memorion Board";
-    img2.title = "Memorion Board";
-    memorionDiv.appendChild(img2);
-
-    const img3Title = document.createElement("h2");
-    img3Title.textContent = "Memorion Final Screen";
-    img3Title.classList.add("img-title");
-    memorionDiv.appendChild(img3Title);
-
-
-    const img3 = document.createElement("img");
-    img3.src = "../img/memorion-final.png";
-    img3.alt = "Memorion Final Screen";
-    img3.title = "Memorion Final Screen";
-    memorionDiv.appendChild(img3);
-
-    const img4Title = document.createElement("h2");
-    img4Title.textContent = "Memorion Rankings";
-    img4Title.classList.add("img-title");
-    memorionDiv.appendChild(img4Title);
-
-
-    const img4 = document.createElement("img");
-    img4.src = "../img/memorion-ranking.png";
-    img4.alt = "Memorion Rankings";
-    img4.title = "Memorion Rankings";
-    memorionDiv.appendChild(img4);
+function memorionText(div) {
+  const p = document.createElement("p");
+  p.textContent = "Memorion is a game where you test your memory by finding matching pairs of cards. " +
+                  "Flip two cards at a time and try to match all pairs. " +
+                  "The game ends when all pairs are successfully found.";
+  div.appendChild(p);
 }
 
-function memorionButton(memorionDiv) {
-    const memorionButton = document.createElement("button");
-    memorionButton.textContent = "Play Memorion";
-    memorionButton.classList.add("btn");
-    memorionButton.addEventListener("click", () => {
-        window.open("https://bamotta.github.io/memorion/");
-    });
+function memorionImages(div) {
+  const images = [
+    ["Memorion Initial Screen", "memorion-inicio.png"],
+    ["Memorion Board", "memorion-tablero.png"],
+    ["Memorion Final Screen", "memorion-final.png"],
+    ["Memorion Rankings", "memorion-ranking.png"]
+  ];
 
-    memorionButton.style.display = "block";
-    memorionButton.style.margin = "0 auto";
+  images.forEach(([title, src]) => {
+    const h2 = document.createElement("h2");
+    h2.textContent = title;
+    h2.classList.add("img-title");
+    div.appendChild(h2);
 
-    memorionDiv.appendChild(memorionButton);
+    const img = document.createElement("img");
+    img.src = `../img/${src}`;
+    img.alt = title;
+    img.title = title;
+    div.appendChild(img);
+  });
 }
 
+function memorionButton(div) {
+  const buttonDiv = document.createElement("div");
+  buttonDiv.className = "button-container";
+
+  const btn1 = document.createElement("button");
+  btn1.textContent = "Play Memorion";
+  btn1.className = "btn";
+  btn1.style.display = "block";
+  btn1.style.margin = "0 auto";
+  btn1.addEventListener("click", () => {
+    window.open("https://bamotta.github.io/memorion/");
+  });
+
+  const btn2 = document.createElement("button");
+  btn2.textContent = "Go to Repository";
+  btn2.className = "btn";
+  btn2.style.display = "block";
+  btn2.style.margin = "0 auto";
+  btn2.addEventListener("click", () => {
+    window.open("https://github.com/bamotta/memorion");
+  });
+
+  buttonDiv.append(btn1, btn2);
+  div.appendChild(buttonDiv);}
+
+// -----------------------Calc O Net Section-----------------------
 function calc() {
-    hideAllSections();
+  hideAllSections();
+  toggleLangButton(false);
 
-    const calcDiv = document.getElementById("calc");
-    calcDiv.className = "content-section";
-    calcDiv.style.display = "block";
-    calcDiv.innerHTML = "";
+  const div = document.getElementById("calc");
+  div.className = "content-section";
+  div.style.display = "block";
+  div.innerHTML = "";
 
-    document.getElementById("title").innerHTML = "CALC <i class='fa-solid fa-globe'></i> NET";
+  document.getElementById("title").innerHTML = "CALC <i class='fa-solid fa-globe'></i> NET";
 
-    calcText(calcDiv);
-    calcImages(calcDiv);
-    calcButton(calcDiv);
+  calcText(div);
+  calcImages(div);
+  calcButton(div);
 }
 
-function calcText(calcDiv) {
-    const calcText = document.createElement("p");
-    calcText.innerHTML = "Calc <i class='fa-solid fa-globe'></i> Net is a simple net caculator that allows you to know diferent values of your net or subnets. ";
-    calcDiv.appendChild(calcText);
+function calcText(div) {
+  const p = document.createElement("p");
+  p.innerHTML = "Calc <i class='fa-solid fa-globe'></i> Net is a simple network calculator that helps you determine different values for your network or subnets.";
+  div.appendChild(p);
 }
 
-function calcImages(calcDiv) {
-    const img1Title = document.createElement("h2");
-    img1Title.innerHTML = "Calc <i class='fa-solid fa-globe'></i> Net Initial Screen";
-    img1Title.classList.add("img-title");
-    calcDiv.appendChild(img1Title);
+function calcImages(div) {
+  const images = [
+    ["Calc <i class='fa-solid fa-globe'></i> Net Initial Screen", "calc-inicio.png"],
+    ["Calc <i class='fa-solid fa-globe'></i> Net Result Screen", "calc-result1.png"],
+    ["Calc <i class='fa-solid fa-globe'></i> Net Result Screen", "calc-result2.png"]
+  ];
 
-    const img1 = document.createElement("img");
-    img1.src = "../img/calc-inicio.png";
-    img1.alt = "Calc O Net Initial Screen";
-    img1.title = "Calc O Net Initial Screen";
-    calcDiv.appendChild(img1);
+  images.forEach(([title, src], index) => {
+    const h2 = document.createElement("h2");
+    h2.innerHTML = title;
+    h2.classList.add("img-title");
+    div.appendChild(h2);
 
-    const img2Title = document.createElement("h2");
-    img2Title.innerHTML = "Calc <i class='fa-solid fa-globe'></i> Net Result Screen";
-    img2Title.classList.add("img-title");
-    calcDiv.appendChild(img2Title);
-
-    const img2 = document.createElement("img");
-    img2.src = "../img/calc-result1.png";
-    img2.alt = "Calc O Net Result Screen";
-    img2.title = "Calc O Net Result Screen";
-    calcDiv.appendChild(img2);
-
-    const img3 = document.createElement("img");
-    img3.src = "../img/calc-result2.png";
-    img3.alt = "Calc O Net Result Screen";
-    img3.title = "Calc O Net Result Screen";
-    img3.style.maxWidth = "100%";
-    calcDiv.appendChild(img3);
+    const img = document.createElement("img");
+    img.src = `../img/${src}`;
+    img.alt = title.replace(/<[^>]+>/g, ""); // strip HTML for alt
+    img.title = img.alt;
+    if (index === 2) img.style.maxWidth = "100%";
+    div.appendChild(img);
+  });
 }
 
-function calcButton(calcDiv) {
-    const calcButton = document.createElement("button");
-    calcButton.textContent = "Use Calc O Net";
-    calcButton.classList.add("btn");
-    calcButton.addEventListener("click", () => {
-        window.open("https://bamotta.github.io/calcuRedes/");
-    });
+function calcButton(div) {
+  const buttonDiv = document.createElement("div");
+  buttonDiv.className = "button-container";
 
-    calcButton.style.display = "block";
-    calcButton.style.margin = "0 auto";
+  const btn = document.createElement("button");
+  btn.textContent = "Use Calc O Net";
+  btn.className = "btn";
+  btn.style.display = "block";
+  btn.style.margin = "0 auto";
+  btn.addEventListener("click", () => {
+    window.open("https://bamotta.github.io/calcuRedes/");
+  });
 
-    calcDiv.appendChild(calcButton);
+  const btn2 = document.createElement("button");
+  btn2.textContent = "Go to Repository";
+  btn2.className = "btn";
+  btn2.style.display = "block";
+  btn2.style.margin = "0 auto";
+  btn2.addEventListener("click", () => {
+    window.open("https://github.com/bamotta/calcuRedes");
+  });
+
+  buttonDiv.append(btn, btn2);
+  div.appendChild(buttonDiv);
 }
 
+// -----------------------Maps API Section-----------------------
 function map() {
-    hideAllSections();
+  hideAllSections();
+  toggleLangButton(false);
 
-    const mapDiv = document.getElementById("map");
-    mapDiv.className = "content-section";
-    mapDiv.style.display = "block";
-    mapDiv.innerHTML = "";
+  const div = document.getElementById("map");
+  div.className = "content-section";
+  div.style.display = "block";
+  div.innerHTML = "";
 
-    document.getElementById("title").textContent = "MAPS API";
+  document.getElementById("title").textContent = "MAPS API";
 
-
-    mapText(mapDiv);
-    mapImages(mapDiv);
-    mapButton(mapDiv);
+  mapText(div);
+  mapImages(div);
+  mapButton(div);
 }
 
-function mapText(mapDiv) {
-    const mapText = document.createElement("p");
-    mapText.textContent = "This app allows you to visualize a map of the world. " +
-        "You can search for different cities and their famous places. " +
-        "You can also add markers to the map to highlight specific locations and even filter the markers by their type."
-        + "The map allows you to activate the earthquake layer, which shows the locations of recent earthquakes in Spain. ";
-    mapDiv.appendChild(mapText);
+function mapText(div) {
+  const p = document.createElement("p");
+  p.textContent = "This app lets you view a world map. You can search cities and landmarks, add markers, " +
+                  "filter them by category, and activate an earthquake layer showing recent seismic events in Spain.";
+  div.appendChild(p);
 }
 
-function mapImages(mapDiv) {
-    const img1Title = document.createElement("h2");
-    img1Title.textContent = "Map Initial Screen";
-    img1Title.classList.add("img-title");
-    mapDiv.appendChild(img1Title);
+function mapImages(div) {
+  const images = [
+    ["Map Initial Screen", "map-inicio.png"],
+    ["Map with Markers", "map-marker.png"],
+    ["Map Showing a City", "map-city.png"],
+    ["Map with Filtered Markers", "map-filter.png"],
+    ["Map with Earthquake Layer", "map-terremoto.png"]
+  ];
 
-    const img1 = document.createElement("img");
-    img1.src = "../img/map-inicio.png";
-    img1.alt = "Map Initial Screen";
-    img1.title = "Map Initial Screen";
-    mapDiv.appendChild(img1);
+  images.forEach(([title, src]) => {
+    const h2 = document.createElement("h2");
+    h2.textContent = title;
+    h2.classList.add("img-title");
+    div.appendChild(h2);
 
-    const img2Title = document.createElement("h2");
-    img2Title.textContent = "Map with Markers";
-    img2Title.classList.add("img-title");
-    mapDiv.appendChild(img2Title);
-
-    const img2 = document.createElement("img");
-    img2.src = "../img/map-marker.png";
-    img2.alt = "Map with Markers";
-    img2.title = "Map with Markers";
-    mapDiv.appendChild(img2);
-
-    const img3Title = document.createElement("h2");
-    img3Title.textContent = "Map showing a city";
-    img3Title.classList.add("img-title");
-    mapDiv.appendChild(img3Title);
-
-    const img3 = document.createElement("img");
-    img3.src = "../img/map-city.png";
-    img3.alt = "Map showing a city";
-    img3.title = "Map showing a city";
-    mapDiv.appendChild(img3);
-
-    const img4Title = document.createElement("h2");
-    img4Title.textContent = "Map with Filtered Markers";
-    img4Title.classList.add("img-title");
-    mapDiv.appendChild(img4Title);
-
-    const img4 = document.createElement("img");
-    img4.src = "../img/map-filter.png";
-    img4.alt = "Map with Filtered Markers";
-    img4.title = "Map with Filtered Markers";
-    mapDiv.appendChild(img4);
-
-    const img5Title = document.createElement("h2");
-    img5Title.textContent = "Map with Earthquake Layer";
-    img5Title.classList.add("img-title");
-    mapDiv.appendChild(img5Title);
-
-    const img5 = document.createElement("img");
-    img5.src = "../img/map-terremoto.png";
-    img5.alt = "Map with Earthquake Layer";
-    img5.title = "Map with Earthquake Layer";
-    mapDiv.appendChild(img5);
+    const img = document.createElement("img");
+    img.src = `../img/${src}`;
+    img.alt = title;
+    img.title = title;
+    div.appendChild(img);
+  });
 }
 
-function mapButton(mapDiv) {
-    const mapButton = document.createElement("button");
-    mapButton.textContent = "Use Map";
-    mapButton.classList.add("btn");
-    mapButton.addEventListener("click", () => {
-        window.open("https://bamotta.github.io/mapsAPI/");
-    });
+function mapButton(div) {
+  const buttonDiv = document.createElement("div");
+  buttonDiv.className = "button-container";
 
-    mapButton.style.display = "block";
-    mapButton.style.margin = "0 auto";
+  const btn = document.createElement("button");
+  btn.textContent = "Use Map";
+  btn.className = "btn";
+  btn.style.display = "block";
+  btn.style.margin = "0 auto";
+  btn.addEventListener("click", () => {
+    window.open("https://bamotta.github.io/mapsAPI/");
+  });
 
-    mapDiv.appendChild(mapButton);
+  const btn2 = document.createElement("button");
+  btn2.textContent = "Go to Repository";
+  btn2.className = "btn";
+  btn2.style.display = "block";
+  btn2.style.margin = "0 auto";
+  btn2.addEventListener("click", () => {
+    window.open("https://github.com/bamotta/mapsAPI");
+  });
+
+  buttonDiv.append(btn, btn2);
+  div.appendChild(buttonDiv);
 }

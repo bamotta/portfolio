@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="icon" href="img/logo.png" type="image/x-icon"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <script src="https://kit.fontawesome.com/a4a3ff8d11.js" crossorigin="anonymous"></script>
+  <title>Portfolio</title>
+</head>
+<body>
+  <header>
+    <h1 id="title" data-i18n="title">Welcome to My Portfolio</h1>
+    <button id="lang-toggle">Español</button>
+
+    <nav>
+      <button id="btn-home" class="btn" data-i18n="home">Home</button>
+      <button id="btn-memorion" class="btn" data-i18n="nav.memorion">Memorion</button>
+      <button id="btn-calc" class="btn" data-i18n="nav.calc">Calc <i class='fa-solid fa-globe'></i> Net</button>
+      <button id="btn-map" class="btn" data-i18n="nav.map">Maps API</button>
+    </nav>
+  </header>
+
+  <main>
+    <div id="home">
+        <section id="pd">
+        <h2 id="personalDetails" data-i18n="personalDetails">Personal Details:</h2>
+        <p id="pdText" data-i18n="pdText">I am Andrés Báez, a 20-years-old student in León.</p>
+        </section>
+
+        <section id="ps">
+            <h2 id="personalStatement" data-i18n="personalStatement">Personal Statement:</h2>
+            <p id="statement" data-i18n="statement">
+              I am currently pursuing an advanced vocational education in Development of Web Applications in IES San Andrés...
+            </p>
+        </section>
+
+        <section>
+          <h2 data-i18n="education">Education:</h2>
+          <p data-i18n="educationContent">First year of Higher Technician in Development of Web Applications.</p>
+        </section>
+
+        <section>
+          <h2 data-i18n="experience">Work experience:</h2>
+          <p data-i18n="experienceContent">
+            I have three months of full-time work experience at Lupa Supermarket...
+          </p>
+        </section>
+
+        <section>
+          <h2 data-i18n="skills">Skills:</h2>
+          <p data-i18n="skillsContent">HTML, CSS, JavaScript, MySQL, Git, GitHub.</p>
+        </section>
+
+        <section>
+          <h2 data-i18n="contacts">Contacts:</h2>
+          <p>abdamotta@gmail.com</p>
+          
+            <button onclick="window.open('https://www.linkedin.com/in/andrés-báez-41611b33a')" data-i18n="goLinkedin">Go to LinkedIn</button>
+            <button onclick="window.open('https://github.com/bamotta')" data-i18n="goGithub">Go to GitHub</button>
+
+        </section>
+    </div>
+
+    <div id="memorion" style="display: none;">Contenido de Memorion</div>
+    <div id="calc" style="display: none;">Contenido de Calc O Net</div>
+    <div id="map" style="display: none;">Contenido de Mapa</div>
+  </main>
+
+  <footer>    
+    <p>&copy; 2025 Andrés Báez. All rights reserved.</p>
+    <p>
+      <a href="https://www.linkedin.com/in/andrés-báez-41611b33a" target="_blank">LinkedIn</a> |
+      <a href="https://github.com/bamotta" target="_blank">GitHub</a> |
+      <a href="mailto:abdamotta@gmail.com">Email</a>
+    </p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
