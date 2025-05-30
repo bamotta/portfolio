@@ -1,3 +1,22 @@
+var currentLang = 'en'; //default language
+
+function switchLanguage() {
+  currentLang = currentLang === 'en' ? 'es' : 'en';
+
+  const elements = document.querySelectorAll("[data-en]");
+  elements.forEach(el => {
+    el.textContent = el.getAttribute(`data-${currentLang}`);
+  });
+
+  // change the button text
+  document.getElementById("lang-toggle").textContent = currentLang === 'en' ? "Español" : "English";
+}
+
+// event for the button
+document.getElementById("lang-toggle").addEventListener("click", switchLanguage);
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("btn-home").addEventListener("click", reload);
     document.getElementById("btn-memorion").addEventListener("click", memorion);
