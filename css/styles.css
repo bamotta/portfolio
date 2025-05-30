@@ -183,3 +183,10 @@ footer a:hover {
   background-color: #2980b9;
 }
 
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 1rem;
+  flex-wrap: wrap;
+}

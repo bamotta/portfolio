@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="icon" href="img/logo.png" type="image/x-icon"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <script src="https://kit.fontawesome.com/a4a3ff8d11.js" crossorigin="anonymous"></script>
+  <title>Portfolio</title>
+</head>
+<body>
+  <header>
+    <h1 id="title" data-i18n="title">Welcome to My Portfolio</h1>
+    <button id="lang-toggle">Español</button>
+
+    <nav>
+      <button id="btn-home" class="btn" data-i18n="home">Home</button>
+      <button id="btn-memorion" class="btn" data-i18n="nav.memorion">Memorion</button>
+      <button id="btn-calc" class="btn" data-i18n="nav.calc">Calc Net</button>
+      <button id="btn-map" class="btn" data-i18n="nav.map">Maps API</button>
+    </nav>
+  </header>
+
+  <main>
+    <div id="home">
+      <table>
+        <tr>
+          <th><p id="personalDetails" data-i18n="personalDetails">Personal Details:</p></th>
+          <td>
+            <p><strong><span id="name" data-i18n="name">Name:</span></strong> Andrés Báez</p>
+          </td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><p><strong><span id="city" data-i18n="city">City:</span></strong> León (Spain)</p></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><p><strong><span id="age" data-i18n="age">Age:</span></strong> 20</p></td>
+        </tr>
+        <tr>
+          <th><p id="personalStatement" data-i18n="personalStatement">Personal Statement:</p></th>
+          <td>
+            <p id="statement" data-i18n="statement">
+              I am currently pursuing an advanced vocational education in Development of Web Applications in IES San Andrés...
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <th data-i18n="education">Education:</th>
+          <td data-i18n="educationContent">First year of Higher Technician in Development of Web Applications.</td>
+        </tr>
+        <tr>
+          <th data-i18n="experience">Work experience:</th>
+          <td data-i18n="experienceContent">
+            I have three months of full-time work experience at Lupa Supermarket...
+          </td>
+        </tr>
+        <tr>
+          <th data-i18n="skills">Skills:</th>
+          <td data-i18n="skillsContent">HTML, CSS, JavaScript, MySQL, Git, GitHub.</td>
+        </tr>
+        <tr>
+          <th data-i18n="contacts">Contacts:</th>
+          <td>abdamotta@gmail.com</td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>
+            <button onclick="window.open('https://www.linkedin.com/in/andrés-báez-41611b33a')" data-i18n="goLinkedin">Go to LinkedIn</button>
+            <button onclick="window.open('https://github.com/bamotta')" data-i18n="goGithub">Go to GitHub</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="memorion" style="display: none;">Contenido de Memorion</div>
+    <div id="calc" style="display: none;">Contenido de Calc O Net</div>
+    <div id="map" style="display: none;">Contenido de Mapa</div>
+  </main>
+
+  <footer>    
+    <p>&copy; 2025 Andrés Báez. All rights reserved.</p>
+    <p>
+      <a href="https://www.linkedin.com/in/andrés-báez-41611b33a" target="_blank">LinkedIn</a> |
+      <a href="https://github.com/bamotta" target="_blank">GitHub</a> |
+      <a href="mailto:abdamotta@gmail.com">Email</a>
+    </p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
