@@ -99,7 +99,7 @@ function memorionImages(div) {
     div.appendChild(h2);
 
     const img = document.createElement("img");
-    img.src = `../img/${src}`;
+    img.src = `img/${src}`;
     img.alt = title;
     img.title = title;
     div.appendChild(img);
@@ -173,7 +173,7 @@ function calcImages(div) {
     div.appendChild(h2);
 
     const img = document.createElement("img");
-    img.src = `../img/${src}`;
+    img.src = `img/${src}`;
     img.alt = title.replace(/<[^>]+>/g, ""); // strip HTML for alt
     img.title = img.alt;
     if (index === 2) img.style.maxWidth = "100%";
@@ -252,7 +252,7 @@ function mapImages(div) {
     div.appendChild(h2);
 
     const img = document.createElement("img");
-    img.src = `../img/${src}`;
+    img.src = `img/${src}`;
     img.alt = title;
     img.title = title;
     div.appendChild(img);
@@ -334,7 +334,7 @@ function velneoImages(div) {
     div.appendChild(h2);
 
     const img = document.createElement("img");
-    img.src = `../img/${src}`;
+    img.src = `img/${src}`;
     img.alt = title;
     img.title = title;
     div.appendChild(img);
