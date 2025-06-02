@@ -1,4 +1,5 @@
 // -----------------------Language Configuration-----------------------
+
 let currentLang = 'en'; // Default language
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById("btn-memorion").addEventListener("click", memorion);
   document.getElementById("btn-calc").addEventListener("click", calc);
   document.getElementById("btn-map").addEventListener("click", map);
+  document.getElementById("btn-velneo").addEventListener("click", velneo);
 
   // Language toggle button
   document.getElementById('lang-toggle').addEventListener('click', () => {
@@ -34,22 +36,28 @@ function loadLanguage(lang) {
 }
 
 // -----------------------Utility Functions-----------------------
+
+// Reload the page
 function reload() {
   location.reload();
 }
 
+// Hide all sections
 function hideAllSections() {
   ["home", "memorion", "calc", "map"].forEach(id => {
     document.getElementById(id).style.display = "none";
   });
 }
 
+// Toggle the language button visibility
 function toggleLangButton(show) {
   const langButton = document.getElementById("lang-toggle");
   langButton.style.display = show ? "inline-block" : "none";
 }
 
 // -----------------------Memorion Section-----------------------
+
+// This section contains the code for the Memorion game
 function memorion() {
   hideAllSections();
   toggleLangButton(false);
@@ -66,6 +74,7 @@ function memorion() {
   memorionButton(div);
 }
 
+// Function to create the text content for the Memorion section
 function memorionText(div) {
   const p = document.createElement("p");
   p.textContent = "Memorion is a game where you test your memory by finding matching pairs of cards. " +
@@ -74,6 +83,7 @@ function memorionText(div) {
   div.appendChild(p);
 }
 
+// Function to create the images for the Memorion section
 function memorionImages(div) {
   const images = [
     ["Memorion Initial Screen", "memorion-inicio.png"],
@@ -96,6 +106,7 @@ function memorionImages(div) {
   });
 }
 
+// Function to create the buttons for the Memorion section
 function memorionButton(div) {
   const buttonDiv = document.createElement("div");
   buttonDiv.className = "button-container";
@@ -122,6 +133,8 @@ function memorionButton(div) {
   div.appendChild(buttonDiv);}
 
 // -----------------------Calc O Net Section-----------------------
+
+// This section contains the code for the Calc O Net application
 function calc() {
   hideAllSections();
   toggleLangButton(false);
@@ -138,12 +151,14 @@ function calc() {
   calcButton(div);
 }
 
+// Function to create the text content for the Calc O Net section
 function calcText(div) {
   const p = document.createElement("p");
   p.innerHTML = "Calc <i class='fa-solid fa-globe'></i> Net is a simple network calculator that helps you determine different values for your network or subnets.";
   div.appendChild(p);
 }
 
+// Function to create the images for the Calc O Net section
 function calcImages(div) {
   const images = [
     ["Calc <i class='fa-solid fa-globe'></i> Net Initial Screen", "calc-inicio.png"],
@@ -166,6 +181,7 @@ function calcImages(div) {
   });
 }
 
+// Function to create the buttons for the Calc O Net section
 function calcButton(div) {
   const buttonDiv = document.createElement("div");
   buttonDiv.className = "button-container";
@@ -193,6 +209,8 @@ function calcButton(div) {
 }
 
 // -----------------------Maps API Section-----------------------
+
+// This section contains the code for the Maps API application
 function map() {
   hideAllSections();
   toggleLangButton(false);
@@ -209,6 +227,7 @@ function map() {
   mapButton(div);
 }
 
+// Function to create the text content for the Maps API section
 function mapText(div) {
   const p = document.createElement("p");
   p.textContent = "This app lets you view a world map. You can search cities and landmarks, add markers, " +
@@ -216,6 +235,7 @@ function mapText(div) {
   div.appendChild(p);
 }
 
+// Function to create the images for the Maps API section
 function mapImages(div) {
   const images = [
     ["Map Initial Screen", "map-inicio.png"],
@@ -239,6 +259,7 @@ function mapImages(div) {
   });
 }
 
+// Function to create the buttons for the Maps API section
 function mapButton(div) {
   const buttonDiv = document.createElement("div");
   buttonDiv.className = "button-container";
@@ -263,4 +284,59 @@ function mapButton(div) {
 
   buttonDiv.append(btn, btn2);
   div.appendChild(buttonDiv);
+}
+
+// -----------------------Velneo Section-----------------------
+
+// This section contains the code for the Velneo application
+function velneo() {
+  hideAllSections();
+  toggleLangButton(false);
+
+  const div = document.getElementById("velneo");
+  div.className = "content-section";
+  div.style.display = "block";
+  div.innerHTML = "";
+
+  document.getElementById("title").textContent = "VELNEO";
+
+  velneoText(div);
+  velneoImages(div);
+  velneoButton(div);
+}
+
+// Function to create the text content for the Velneo section
+function velneoText(div) {
+  const p = document.createElement("p");
+  p.textContent = "Velneo is a platform for developing business applications. " +
+                  "It allows you to create applications with a focus on speed and ease of use.";
+  div.appendChild(p);
+}
+
+// Function to create the images for the Velneo section
+function velneoImages(div) {
+  const images = [
+    ["Initial Screen", "velneo-inicio.png"],
+    ["Articulos", "velneo-articulo.png"],
+    ["Nuevo Articulo", "velneo-nuevoArticulo.png"],
+    ["Entidades", "velneo-entidades.png"],
+    ["Nueva Entidad", "velneo-nuevoEntidad.png"],
+    ["Tickets", "velneo-ticket.png"],
+    ["Nuevo Ticket", "velneo-nuevoTicket.png"],
+    ["Lineas de Ticket", "velneo-lineaTicket.png"],
+    ["Nueva Línea de Ticket", "velneo-nuevoLinea.png"]
+  ];
+
+  images.forEach(([title, src]) => {
+    const h2 = document.createElement("h2");
+    h2.textContent = title;
+    h2.classList.add("img-title");
+    div.appendChild(h2);
+
+    const img = document.createElement("img");
+    img.src = `../img/${src}`;
+    img.alt = title;
+    img.title = title;
+    div.appendChild(img);
+  });
 }
