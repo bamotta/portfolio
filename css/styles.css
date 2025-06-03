@@ -21,6 +21,7 @@ header {
   text-align: center;
   border-radius: 10px;
   margin-bottom: 30px;
+  overflow-x: auto; /* Prevent buttons from overflowing */
 }
 
 header h1 {
@@ -32,8 +33,10 @@ nav {
   display: flex;
   justify-content: center;
   gap: 15px;
+  flex-wrap: wrap; /* Allow buttons to wrap on small screens */
 }
 
+/* General buttons */
 .btn {
   background-color: #3498db;
   color: white;
@@ -43,6 +46,11 @@ nav {
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
+  flex: 1 1 auto;          /* Make button flexible */
+  max-width: 200px;        /* Set maximum width */
+  min-width: 120px;        /* Set minimum width for readability */
+  text-align: center;
+  white-space: nowrap;     /* Prevent text from breaking into multiple lines */
 }
 
 .btn:hover {
@@ -144,7 +152,6 @@ main {
   flex-wrap: wrap;
 }
 
-
 /* Footer */
 footer {
   text-align: center;
@@ -165,36 +172,46 @@ footer a:hover {
 }
 
 .content-section {
-    padding: 2rem;
-    background-color: white;
-    border-radius: 12px;
-    max-width: 900px;
-    margin: 2rem auto;
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 12px;
+  max-width: 900px;
+  margin: 2rem auto;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
 }
 
 .content-section h2 {
-    color: #2c3e50;
-    font-size: 1.5rem;
-    margin-top: 1.5rem;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 0.4rem;
+  color: #2c3e50;
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.4rem;
 }
 
 .content-section p {
-    font-size: 1.1rem;
-    margin-bottom: 1.2rem;
-    color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+  color: #333;
 }
 
 .content-section img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin: 1rem 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
 
-
+  .btn {
+    width: 100%;
+    max-width: 90%;
+  }
+}
