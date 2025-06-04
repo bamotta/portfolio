@@ -2,6 +2,8 @@
   "en": {
     "title": "Welcome to My Portfolio",
     "personalDetails": "Personal Details:",
+    "welcome":"Introduction:",
+    "introText": "This is my personal portfolio where you can find information about my projects, skills, and experience.",
     "pdText": "I am Andrés Báez, a 20-years-old student passionate about web development in León. During my internship, I worked on real-world projects that strengthened both my technical skills and my ability to work in a team. I am eager to continue learning and growing as a professional in the field of software development.",
     "personalStatement": "Personal Statement:",
     "statement": "I am currently studying a Higher Vocational Training Program in Web Application Development at IES San Andrés. I value teamwork, have a passion for programming and technology, and I'm eager to apply my skills in real-world projects.",
@@ -20,6 +22,8 @@
   "es": {
     "title": "Bienvenido a Mi Portfolio",
     "personalDetails": "Datos Personales:",
+    "welcome":"Introducción:",
+    "introText": "Este es mi portfolio personal donde puedes encontrar información sobre mis proyectos, habilidades y experiencia.",
     "pdText": " Soy Andrés Báez, un estudiante de 20 años apasionado por el desarrollo web en León. Durante mis prácticas, trabajé en proyectos reales que fortalecieron tanto mis habilidades técnicas como mi capacidad para trabajar en equipo. Estoy motivado por seguir aprendiendo y creciendo como profesional en el campo del desarrollo de software.",
     "personalStatement": "Declaración Personal:",
     "statement": "Estoy cursando un ciclo formativo de grado superior en Desarrollo de Aplicaciones Web en el IES San Andrés. Valoro el trabajo en equipo, tengo pasión por la programación y la tecnología, y estoy deseando aplicar mis habilidades en proyectos reales.",
