@@ -44,7 +44,7 @@ function reload() {
 
 // Hide all sections
 function hideAllSections() {
-  ["home", "memorion", "calc", "map"].forEach(id => {
+  ["home", "memorion", "calc", "map", "velneo"].forEach(id => {
     document.getElementById(id).style.display = "none";
   });
 }
